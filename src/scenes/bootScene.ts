@@ -3,7 +3,7 @@ import { CONST } from "../const/const";
 /**
 * @author       Kirill Nepomnyaschiy <nka1024@gmail.com>
 * @copyright    nka1024
-* @description  nomads
+* @description  atp
 * @license      Apache 2.0
 */
 

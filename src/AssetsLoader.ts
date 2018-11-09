@@ -1,7 +1,7 @@
 /**
 * @author       Kirill Nepomnyaschiy <nka1024@gmail.com>
 * @copyright    nka1024
-* @description  nomads
+* @description  atp
 * @license      Apache 2.0
 */
 
@@ -32,10 +32,12 @@ export class AssetsLoader {
       './assets/fonts/pokemon/pokemon-8-green.png',
       './assets/fonts/pokemon/pokemon-8.fnt');
 
-    // scene.load.spritesheet('mothership_48x48', './assets/sprites/mothership_48x48.png', {
-    //   frameWidth: 48,
-    //   frameHeight: 48,
-    //   endFrame: 7
-    // });
+    scene.load.spritesheet('air_attack_64x64', './assets/sprites/air_attack_64x64.png', { endFrame: 5, frameWidth: 64, frameHeight: 64});
+    scene.load.spritesheet('air_uppercut_64x64', './assets/sprites/air_uppercut_64x64.png', { endFrame: 9, frameWidth: 64, frameHeight: 64});
+    scene.load.spritesheet('attack_64x64', './assets/sprites/attack_64x64.png', { endFrame: 6, frameWidth: 64, frameHeight: 64});
+    scene.load.spritesheet('idle_64x64', './assets/sprites/idle_64x64.png', { endFrame: 5, frameWidth: 64, frameHeight: 64});
+    scene.load.spritesheet('jump_64x64', './assets/sprites/jump_64x64.png', { endFrame: 4, frameWidth: 64, frameHeight: 64});
+    scene.load.spritesheet('run_64x64', './assets/sprites/run_64x64.png', { endFrame: 6, frameWidth: 64, frameHeight: 64});
+    scene.load.spritesheet('uppercut_64x64', './assets/sprites/uppercut_64x64.png', { endFrame: 9, frameWidth: 64, frameHeight: 64});
   }    
 }
