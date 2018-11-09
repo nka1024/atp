@@ -52,10 +52,24 @@ export class Daemon extends Phaser.GameObjects.Sprite {
           this.speed.y = -4.05;
         }
       }
+
+      if (anim.key == 'air_attack' || anim.key == 'attack') {
+
+        if (frame.index < 4) {
+          this.physics = false;
+        } else {
+          this.physics = true;
+        }
+
+        if (frame.index == 4) {
+          this.speed.x = this.flipX ? -2.15 : 2.15;
+        }
+      }
+
     });
 
     this.on('animationcomplete', (anim: Animations.Animation, frame: Animations.AnimationFrame) => {
-      if (anim.key == 'attack' || anim.key == 'uppercut' || anim.key == 'air_uppercut') {
+      if (anim.key == 'attack' || anim.key == 'uppercut' || anim.key == 'air_uppercut' || anim.key == 'air_attack') {
         this.speed.x = this.charge.x;
         this.speed.y = this.charge.y;
         this.charge.x = 0;
@@ -102,16 +116,6 @@ export class Daemon extends Phaser.GameObjects.Sprite {
     });
 
     this.scene.anims.create({
-      key: 'attack',
-      frames: this.scene.anims.generateFrameNumbers('attack_64x64', { 
-        frames: [0, 1, 2, 3, 4, 5, 5] 
-      }),
-      frameRate: 15,
-      repeat: 0,
-      repeatDelay: 0
-    });
-
-    this.scene.anims.create({
       key: 'uppercut',
       // frames: this.scene.anims.generateFrameNumbers('uppercut_64x64', { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8] }),
       frames: this.scene.anims.generateFrameNumbers('uppercut_64x64', { 
@@ -135,9 +139,9 @@ export class Daemon extends Phaser.GameObjects.Sprite {
     this.scene.anims.create({
       key: 'air_attack',
       frames: this.scene.anims.generateFrameNumbers('air_attack_64x64', { 
-        frames: [0, 1, 2, 3, 4, 4] 
+        frames: [0, 1, 2, 3,3, 4, 4] 
       }),
-      frameRate: 17,
+      frameRate: 15,
       repeat: 0,
       repeatDelay: 0
     });
@@ -211,7 +215,8 @@ export class Daemon extends Phaser.GameObjects.Sprite {
     if (!this.isAttacking) {
       if (this.attackKey.isDown) {
         this.isAttacking = true;
-        this.anims.play('attack', true);
+        this.anims.play(this.y < this.floorY ? 'air_attack' : 'attack', true);
+        this.charge.x = this.flipX ? -0.4 : 0.4;
       }
 
       if (this.uppercutKey.isDown) {
